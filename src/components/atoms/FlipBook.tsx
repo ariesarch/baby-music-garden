@@ -21,7 +21,7 @@ export const FlipBook = () => {
             togglePageFlip(nextPage);
         }, 10000);
     };
-    const togglePageFlip = (el: HTMLElement | null) => {
+    const togglePageFlip = (el: any) => {
         if (el) {
             setAllPagesBack();
             setClickedPageForward(el);
