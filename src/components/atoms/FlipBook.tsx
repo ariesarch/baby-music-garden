@@ -19,7 +19,7 @@ export const FlipBook = () => {
             const currentPage = document.querySelector('.z-50');
             const nextPage = currentPage?.nextElementSibling || document.querySelector('.page');
             togglePageFlip(nextPage);
-        }, 5000);
+        }, 10000);
     };
     const togglePageFlip = (el: HTMLElement | null) => {
         if (el) {
