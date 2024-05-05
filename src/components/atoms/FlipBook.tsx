@@ -41,17 +41,30 @@ export const FlipBook = () => {
     }
     return (
             <div className="perspective text-white  w-full h-full flex justify-end flex-grow">
-            {/* <img src="/photos/front_1.jpg" alt="Back" width={200} height={200} /> */}
                 {photoData.map((photo:any,index:number)=> (
                 <div key={index}  className="page absolute duration-1000 flex items-end origin-left w-[44.5%] transition h-[68.5%] transform" data-page="1" onClick={(e) => togglePageFlip(e.currentTarget)}>
                     <div className="front flex flex-col items-start justify-center px-2 sm:px-5 md:px-20 font-bold absolute right-0 w-full h-full">
                     {/* Welcome to this Page {photoData.length}
                         <p className="text-sm text-gray-500">Click me to open</p> */}
-                        <Image src={photo.front} alt={photo.front} width={200} height={200} />
+                        {/* <Image src={photo.front} alt={photo.front} width={200} height={200} /> */}
+                            <img
+                                src={photo.front}
+                                alt={photo.front}
+                                className='object-contain'
+                                style={{ width: '90%', height: '90%' }}
+                            />
+
                     </div>
                     <div className="back font-bold flex items-center justify-end px-2 sm:px-5 md:px-20 absolute w-full h-full">
                         {/* {photo.front} */}
-                        <Image src={photo.back} alt={photo.back} width={200} height={200} />
+                        {/* <Image src={photo.back} alt={photo.back} width={200} height={200} /> */}
+                            <img
+                                src={photo.back}
+                                alt={photo.back}
+                                className='object-contain'
+                                style={{ width: '90%', height: '90%' }}
+                            />
+
                     </div>
                 </div>
                 ))}
