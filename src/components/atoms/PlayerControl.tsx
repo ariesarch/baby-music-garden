@@ -60,7 +60,10 @@ export const PlayerControl = () => {
                 setCurrentProgress(((audioElement.currentTime / audioElement.duration) * 100)||0);
             // }
         };
-        
+        const handleEnded = () => {
+            changeMusic('next'); // Change to the next music when current one ends
+        };
+
         if(currentMusic) {
             audioElement.src = currentMusic.src
             if (isPlaying) {
@@ -70,13 +73,15 @@ export const PlayerControl = () => {
                 audioElement.currentTime = currentMusicTime;
             }
             audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
-            audioElement.addEventListener('timeupdate', HandleTimeUpdate);     
+            audioElement.addEventListener('timeupdate', HandleTimeUpdate);   
+            audioElement.addEventListener('ended', handleEnded);  
         }else{
             setCurrentMusic(audioState[0] as Music)
         }
         return () => {
             audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
             audioElement.removeEventListener('timeupdate', HandleTimeUpdate);
+            audioElement.removeEventListener('ended', handleEnded); 
         };
     }, [currentMusic])
     return (
